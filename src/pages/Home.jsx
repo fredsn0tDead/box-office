@@ -3,6 +3,7 @@ import { searchForShows } from '../API/tvmaze';
 import { useState , React} from 'react'
 import { MainPageLayout } from '../components/MainPageLayout'
 import { searchForPeople } from '../API/tvmaze';
+import { SearchForm } from '../components/SearchForm';
 // const pages = {
 //   home: 'HomePage',
 //   starred: 'Starred',
@@ -10,34 +11,27 @@ import { searchForPeople } from '../API/tvmaze';
 // }
 export const Home = function ()  {
   // const {home, starred} = pages
-  const [searchstr,setsearchstr] = useState('')// change the state of the input in the text box to be up
-//we are going to use the target to 
-  // were are checking if the state has been updated
-  const[apiData,setapiData] = useState(null);
-  const[searchOption, setSearchOption] = useState('shows')//set the default state to the input shows
-  const[apiDataError, setapiDataError] = useState(null);
-  console.log(searchOption);
-  const onSearchChange = (ev) =>{//takes the parameter the event object //we are going to use the target to 
-
-    setsearchstr(ev.target.value);//we are now getting the actual input typed in the box we have updated the state of the value now
   
-  };
-  const onRadioChange = ev => {
-    setSearchOption(ev.target.value);
-  };
+
+  const[apiData,setapiData] = useState(null);
+  const[apiDataError, setapiDataError] = useState(null);
+  
+  
+  
  
-  const onSearch = async (ev) => {
-     ev.preventDefault();
+  const onSearch = async ({searchstr, searchOption}) => {//we passed in the options and destructured it 
+    
     
     try{
       setapiDataError(null);
+      let result;  
     
       if (searchOption === 'shows'){
-        const result = await searchForShows(searchstr);
+        result = await searchForShows(searchstr);
         setapiData(result);
       }
       else{
-        const result = await searchForPeople(searchstr);
+        result = await searchForPeople(searchstr);
         setapiData(result);  
       }
   
@@ -78,25 +72,11 @@ export const Home = function ()  {
     <div>
     
     <MainPageLayout/>
-    <form onSubmit={onSearch}>
-    <input type = "text" onChange={onSearchChange} value={searchstr}/>
-
-    <label>
-      Shows
-      <input type='radio' name='search-option' value='shows' checked={searchOption === 'shows'} onChange={onRadioChange}/>
-    </label>
-    <label>
-      Actors
-      <input type='radio' name='search-option' value='actors' checked={searchOption ==='actors'} onChange={onRadioChange}/>
-    </label>
-
-    <button type='submit'>Search</button>
-    </form>
-    <div>
+    <SearchForm onSearch={onSearch}/>
+    
+    <div> 
       {renderapiData()}
-
-
-    </div>
+</div> 
     
     
 
