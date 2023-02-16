@@ -4,6 +4,8 @@ import { useState , React} from 'react'
 import { MainPageLayout } from '../components/MainPageLayout'
 import { searchForPeople } from '../API/tvmaze';
 import { SearchForm } from '../components/SearchForm';
+import { Show_Grid } from '../components/shows/Show_Grid';
+import { Actor_Grid } from '../components/actors/Actor_Grid';
 // const pages = {
 //   home: 'HomePage',
 //   starred: 'Starred',
@@ -52,13 +54,16 @@ export const Home = function ()  {
         //return a div element in the same place where the shows our outputted to
 
       }
+      if (apiData ?.length  === 0){
+        return <div>No Results</div>
+      }
 
       if (apiData){
-        return apiData[0].show ? apiData.map((data) => (
-        <div key= {data.show.id} >{data.show.name}</div>
-        )) :  apiData.map((data) => (
-          <div key= {data.person.id} >{data.person.name}</div>
-          ));
+        return apiData[0].show ? (
+        <Show_Grid shows={apiData}/>
+        ) :( 
+        <Actor_Grid actors = {apiData}/>
+        );
 
       }
       return null;
