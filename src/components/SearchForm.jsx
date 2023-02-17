@@ -1,12 +1,19 @@
 /* eslint-disable */ 
 import React from 'react'
-import { useState } from 'react'
+import { useState , useEffect} from 'react'
 
 export const SearchForm = ({onSearch}) => {
+
+ 
   const [searchstr,setsearchstr] = useState('')// change the state of the input in the text box to be up
 //we are going to use the target to 
   const[searchOption, setSearchOption] = useState('shows')//set the default state to the input shows
+  
+  
   const onSearchChange = (ev) =>{//takes the parameter the event object //we are going to use the target to 
+
+
+  
 
     setsearchstr(ev.target.value);//we are now getting the actual input typed in the box we have updated the state of the value now
   
