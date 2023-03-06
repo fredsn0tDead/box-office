@@ -7,8 +7,10 @@ import { Home } from './pages/Home';
 import { Starred } from './pages/Starred';
 
 function App() {
+  
+
   return (
-     
+   
     <Routes>
       <Route exact path="/" element={<Home/> }/>
       <Route exact path="/starred" element= {<Starred/>}/> 
