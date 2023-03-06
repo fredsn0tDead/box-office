@@ -3,36 +3,17 @@ import React from 'react'
 import { useParams } from 'react-router-dom';
 import { useEffect,useState } from 'react';
 import { getShowId } from '../../API/tvmaze';
+import {useQuery} from '@tanstack/react-query'
 
 
-const useShowById = () => {
-  const [showData, setShowData] = useState(null);
-  const [showError, setShowError] = useState(null);
-  useEffect(() => {
-    //getShowId();
-    async function fetchData(){
-      try{
-      const data = await getShowId(showId);
-      setShowData(data);
-      }
-      catch (err){
-      setShowError(err);
-      }
-    }
-    fetchData();
-  }, [showId]);//must pass in the showiD as a dependency if
-  // we use a parameter in the useffect
-  return (showData ,showError)
 
-}
-//idea behind custom hooks is like functions in programs
-// we are trying to reuse code to prevent redundancy
 
 export const Show_Page = () => {
-
-  const{ showId }= useParams();//returns a key/value pair from teh current url matched by the route path
+  const {data: showData , error: showError} = useQuery({queryKey: ['show',showId], queryFn: () => getShowId(showId)});
+  
+  const{ showId } = useParams();//returns a key/value pair from teh current url matched by the route path
   //we gave the key "showId" to be mapped as the key to the actual id from the api
-  const {showData, showError} = useShowById(showId); // Destructure the data
+  // const {showData, showError} = useShowById(showId); // Destructure the data
   if(showError){
     return <div> We have an error: {showError.message}</div>
   }
