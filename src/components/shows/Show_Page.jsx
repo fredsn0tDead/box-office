@@ -14,7 +14,7 @@ import { Cast } from './Cast';
 
 export const Show_Page = () => {
   const{ showId } = useParams();//literallly extract the id of the show itself so we can use it
-  const {data: showData , error: showError} = useQuery({queryKey: ['show',showId], queryFn: () => getShowId(showId)});
+  const {data: showData , error: showError} = useQuery({queryKey: ['show',showId], queryFn: () => getShowId(showId), refetchOnWindowFocus:false,});
   
   //returns a key/value pair from teh current url matched by the route path
   //we gave the key "showId" to be mapped as the key to the actual id from the api
