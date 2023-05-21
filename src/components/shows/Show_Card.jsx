@@ -22,7 +22,7 @@ export const Show_Card = ({name, image,id, summary}) => {
         <p>{summaryStripped}</p>
 
         <div>
-            <Link to={`/show/${id}`/*Created ad dynamic page to get the id of each card*/} >Read More/Link</Link>
+            <a href={`/show/${id}`/*Created ad dynamic page to get the id of each card*/} target='_blank' rel="moreferrer">Read More/Link</a>
             <button type = "button">Star me</button>
 
         </div>

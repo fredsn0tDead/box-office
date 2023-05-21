@@ -1,6 +1,6 @@
 /* eslint-disable */ 
 import React from 'react'
-import { useParams } from 'react-router-dom';
+import { Link, useParams,useNavigate } from 'react-router-dom';
 import { useEffect,useState } from 'react';
 import { getShowId } from '../../API/tvmaze';
 import {useQuery} from '@tanstack/react-query'
@@ -15,7 +15,12 @@ import { Cast } from './Cast';
 export const Show_Page = () => {
   const{ showId } = useParams();//literallly extract the id of the show itself so we can use it
   const {data: showData , error: showError} = useQuery({queryKey: ['show',showId], queryFn: () => getShowId(showId), refetchOnWindowFocus:false,});
-  
+  const navigateTo = useNavigate();//initialize our variable
+  // const onGoBack = () =>{
+
+  //   navigateTo('/');//simply nagivgate back to the home page
+
+  // };
   //returns a key/value pair from teh current url matched by the route path
   //we gave the key "showId" to be mapped as the key to the actual id from the api
   // const {showData, showError} = useShowById(showId); // Destructure the data
@@ -24,6 +29,9 @@ export const Show_Page = () => {
   }
   if(showData){
     return <div>
+      <Link to='/'>Go Back to home</Link>
+      {/* <button type='button' onClick={onGoBack}>Go back to home</button> */}
+
       <ShowMainData 
       image={showData.image} 
       name={showData.name} 
