@@ -1,22 +1,22 @@
 /* eslint-disable */ 
 import { searchForShows } from '../API/tvmaze';
 import {useQuery} from '@tanstack/react-query';
-import { useState , React} from 'react'
+import { useState  ,useReducer, React} from 'react'
 import { MainPageLayout } from '../components/MainPageLayout'
 import { searchForPeople } from '../API/tvmaze';
 import { SearchForm } from '../components/SearchForm';
 import { Show_Grid } from '../components/shows/Show_Grid';
 import { Actor_Grid } from '../components/actors/Actor_Grid';
 
-// const pages = {
-//   home: 'HomePage',
-//   starred: 'Starred',
 
-// }
+
 export const Home = function ()  {
-  // const {home, starred} = pages
+  
+
   
   const [filter, setFilter] = useState(null);
+
+  
 
   const { data:apiData, error:apiDataError } = useQuery({
       queryKey: ['search', filter],
@@ -69,7 +69,7 @@ export const Home = function ()  {
     
     <div> 
       {renderapiData()}
-</div> 
+    </div> 
     
     
 
