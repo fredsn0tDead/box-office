@@ -1,11 +1,11 @@
 /* eslint-disable */ 
 import React from 'react'
 import { useState , useEffect} from 'react'
-
+import { useSearchStr } from '../library/useSearchstr'
 export const SearchForm = ({onSearch}) => {
 
  
-  const [searchstr,setsearchstr] = useState('')// change the state of the input in the text box to be up
+  const [searchstr,setsearchstr] = useSearchStr('')// change the state of the input in the text box to be up
 //we are going to use the target to 
   const[searchOption, setSearchOption] = useState('shows')//set the default state to the input shows
   
