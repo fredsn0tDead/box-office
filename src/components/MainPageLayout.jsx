@@ -6,14 +6,14 @@ import { Title } from './Title'
 
 //  pass in the childern of theMainpage which is the home
 
-export const MainPageLayout = function ({childern}) {
+export const MainPageLayout = function ({children}) {
    
     return (
     <div>
     <Title title="Box Office" subtitle="Are you looking for a movie or an actor" />
     <Nav/>
-    <h1>{childern}</h1>
+    <Outlet/>
     
     
-    </div> )
-}
+    </div> );
+};

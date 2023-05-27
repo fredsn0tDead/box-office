@@ -7,6 +7,7 @@ import { searchForPeople } from '../API/tvmaze';
 import { SearchForm } from '../components/SearchForm';
 import { Show_Grid } from '../components/shows/Show_Grid';
 import { Actor_Grid } from '../components/actors/Actor_Grid';
+import styled ,{css, ThemeProvider} from 'styled-components'//assume this is a default export
 
 
 
@@ -63,8 +64,10 @@ export const Home = function ()  {
     // use fetch to return a promise
     //fetch('https://api.tvmaze.com/search/shows?q=sword').then()
     <div>
+     
     
-    <MainPageLayout/>
+  
+    
     <SearchForm onSearch={onSearch}/>
     
     <div> 
