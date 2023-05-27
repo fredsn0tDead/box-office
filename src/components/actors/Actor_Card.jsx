@@ -1,18 +1,19 @@
 /* eslint-disable */ 
 import React from 'react'
 import { Link } from 'react-router-dom'
-
+import styled from 'styled-components'
+import { SearchCard, SearchImgWrapper } from '../Common/SearchCard'
 export const Actor_Card = ({name , image, gender, country, birthday, deathday}) => {
    
   
     return (
-      <div>
+      <SearchCard>
   
-          <div>
+          <SearchImgWrapper>
               
                <img src={image} alt={name}/>
                
-          </div>
+          </SearchImgWrapper>
   
           <h1>{name} {!!gender &&  /* We are turnning gender into a boolean value to determine if a gender is given then use conditional
           then use conditional rendering only show gender if given with && operator we applied DOUBLE NEGATION to change gender to boolean */ 
@@ -29,6 +30,6 @@ export const Actor_Card = ({name , image, gender, country, birthday, deathday}) 
           </div>
   
   
-      </div>
+      </SearchCard>
   )
 }

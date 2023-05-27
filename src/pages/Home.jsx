@@ -8,7 +8,7 @@ import { SearchForm } from '../components/SearchForm';
 import { Show_Grid } from '../components/shows/Show_Grid';
 import { Actor_Grid } from '../components/actors/Actor_Grid';
 import styled ,{css, ThemeProvider} from 'styled-components'//assume this is a default export
-
+import { TextCenter } from '../components/Common/TextCenter';
 
 
 export const Home = function ()  {
@@ -39,12 +39,12 @@ export const Home = function ()  {
 
   const renderapiData = () => {
       if (apiDataError){
-        return <div> Error occured: {apiDataError.message} </div>
+        return <TextCenter> Error occured: {apiDataError.message} </TextCenter>
         //return a div element in the same place where the shows our outputted to
 
       }
       if (apiData ?.length  === 0){
-        return <div>No Results</div>
+        return <TextCenter>No Results</TextCenter>
       }
 
       if (apiData){

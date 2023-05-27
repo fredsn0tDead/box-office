@@ -1,11 +1,11 @@
 /* eslint-disable */ 
-
+import styled from 'styled-components'
 import React from 'react'
 import { Actor_Card } from './Actor_Card'
-
+import { FlexGrid } from '../Common/FlexGrid'
 export const Actor_Grid = ({actors}) => {
   return (
-    <div>
+    <FlexGrid>
        {actors.map(data => ( 
         <Actor_Card key = {data.person.id} 
         id={data.person.id}
@@ -21,6 +21,6 @@ export const Actor_Grid = ({actors}) => {
 
 
 
-    </div>
+    </FlexGrid>
   )
 }

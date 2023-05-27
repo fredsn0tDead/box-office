@@ -1,7 +1,7 @@
 /* eslint-disable */ 
 import { useQuery } from '@tanstack/react-query';
 import React from 'react'
-
+import { TextCenter } from '../components/Common/TextCenter';
 import { useStarredShows } from '../library/useStarredShows';
 import { getShowIds } from '../API/tvmaze';
 import { Show_Grid } from '../components/shows/Show_Grid';
@@ -26,16 +26,16 @@ export const Starred = function () {
   }
   if(starredShows && starredShows.length==0){
     return(
-      <div> No shows Starred </div>
+      <TextCenter> No shows Starred </TextCenter>
     )
     }
   if(starredShowsError){
     return( 
-      <div>Error has occurred: {starredShowsError.message}; </div>
+      <TextCenter>Error has occurred: {starredShowsError.message}; </TextCenter>
     )
     };
   return (
-    <div>Shows are loading</div>
+    <TextCenter>Shows are loading</TextCenter>
   )
 
 };
