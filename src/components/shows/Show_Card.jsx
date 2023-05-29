@@ -1,4 +1,5 @@
 /* eslint-disable */ 
+import { useRef } from 'react'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
@@ -10,6 +11,23 @@ export const Show_Card = ({name, image,id, summary,onStarMeClick,isStarred}) => 
   //We are taking the original descritopn <p> tag taken from the API and only displaying the first 10 characters and using
   // the regular expression /<.+?>/g,'') to strip all the html
 
+  const starBtnRef =  useRef(); //gives you back a hook that you then reference
+  //starBetnref is a native html element because it is still just a button
+  //equivlanent to document.getElementByID('id')
+  //we can manipluate the class name directly
+  const handleStarClick = () =>{
+    onStarMeClick(id);
+    const starBtnEl = starBtnRef.current;
+    if(!starBtnEl) return;
+
+    if (isStarred){
+      starBtnEl.classList.remove('animate');
+        //when its starred we want to remove the animation since it is starred
+    }
+    else{
+      starBtnEl.classList.add('animate')
+    }
+  }
   return (
     <SearchCard>
 
@@ -24,7 +42,11 @@ export const Show_Card = ({name, image,id, summary,onStarMeClick,isStarred}) => 
 
         <ActionSection>
             <a href={`/show/${id}`/*Created ad dynamic page to get the id of each card*/} target='_blank' rel="moreferrer">Read More/Link</a>
-            <StarBtn type = "button" onClick={()=> onStarMeClick(id)} >
+            <StarBtn
+            ref={starBtnRef} //can only be passed to native html elements
+             type = "button" 
+             onClick={handleStarClick}
+               >
               
               <StarIcon active={isStarred}/>
             </StarBtn>
@@ -61,5 +83,21 @@ const StarBtn = styled.button`
   align-items: center;
   &:hover {
     cursor: pointer;
+  }
+  &.animate {
+    ${StarIcon} {
+      animation: increase 0.75s ease-in forwards;
+      @keyframes increase {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(3) rotate(45deg);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+    }
   }
 `;
