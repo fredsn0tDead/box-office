@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.js": "/fredsn0tDead/box-office/static/js/main.0332415d.js",
+    "static/js/787.6e354c4d.chunk.js": "/fredsn0tDead/box-office/static/js/787.6e354c4d.chunk.js",
+    "index.html": "/fredsn0tDead/box-office/index.html",
+    "main.0332415d.js.map": "/fredsn0tDead/box-office/static/js/main.0332415d.js.map",
+    "787.6e354c4d.chunk.js.map": "/fredsn0tDead/box-office/static/js/787.6e354c4d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.0332415d.js"
+  ]
+}
