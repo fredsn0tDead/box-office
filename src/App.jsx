@@ -16,8 +16,8 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
     <GlobalTheme2>
+    
     <Routes>
-      
     <Route element={<MainPageLayout/>}>
      <Route exact path="/" element={<Home/> }/>
       <Route exact path="/starred" element= {<Starred/>}/> 
@@ -25,7 +25,8 @@ function App() {
 
       <Route path='/show/:showId' /*Used router dom to map the targed id*/ element={<Show_Page/>}/>
       <Route path="*" element={<div>Not found</div>}/>
-    </Routes>
+      </Routes>
+    
     </GlobalTheme2>
   </QueryClientProvider>  
   );

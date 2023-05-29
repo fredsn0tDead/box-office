@@ -41,7 +41,7 @@ export const Show_Card = ({name, image,id, summary,onStarMeClick,isStarred}) => 
         <p>{summaryStripped}</p>
 
         <ActionSection>
-            <a href={`/show/${id}`/*Created ad dynamic page to get the id of each card*/} target='_blank' rel="moreferrer">Read More/Link</a>
+            <Link to={`/show/${id}`/*Created ad dynamic page to get the id of each card*/} target='_blank' rel="moreferrer">Read More/Link</Link>
             <StarBtn
             ref={starBtnRef} //can only be passed to native html elements
              type = "button" 
