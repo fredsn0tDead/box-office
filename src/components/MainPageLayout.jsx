@@ -10,7 +10,7 @@ export const MainPageLayout = function ({children}) {
    
     return (
     <div>
-    <Title title="Box Office" subtitle="Are you looking for a TV Show or an Actor" />
+    <Title title="Box Office" subtitle="Are you  for a TV Show or an Actor" />
     <Nav/>
     <Outlet/>
     
